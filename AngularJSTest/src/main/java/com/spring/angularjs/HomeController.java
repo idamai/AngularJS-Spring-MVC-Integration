@@ -5,8 +5,10 @@ import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 
 import org.apache.commons.io.FileUtils;
 import org.codehaus.jackson.JsonParseException;
@@ -19,6 +21,7 @@ import org.springframework.core.io.Resource;
 import org.springframework.core.io.ResourceLoader;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -78,10 +81,32 @@ public class HomeController {
 		return "home.jsp";
 	}
 
+	@RequestMapping(value = "/partials/book-list", method = RequestMethod.GET)
+	public String getBookListPage(Locale locale, Model model)
+			throws JsonParseException, JsonMappingException, IOException {
+		return "partials/book-list.jsp";
+	}
+
 	@RequestMapping(value = "/showBooks", method = RequestMethod.GET)
 	@ResponseBody
 	public List<Book> getBooks() {
 		List<Book> bookList = new ArrayList<Book>(Arrays.asList(books));
 		return bookList;
+	}
+
+	@RequestMapping(value = "/partials/book-details", method = RequestMethod.GET)
+	public String getBookDetailsPage(Locale locale, Model model)
+			throws JsonParseException, JsonMappingException, IOException {
+		return "partials/book-details.jsp";
+	}
+
+	@RequestMapping(value = "/getBook/{bookId}", method = RequestMethod.GET)
+	@ResponseBody
+	public Book getBook(@PathVariable("bookId") String bookId) {
+		Map<String, Book> bookMap = new HashMap<String, Book>();
+		for (int i = 0; i < books.length; i++) {
+			bookMap.put(books[i].getId(), books[i]);
+		}
+		return bookMap.get(bookId);
 	}
 }

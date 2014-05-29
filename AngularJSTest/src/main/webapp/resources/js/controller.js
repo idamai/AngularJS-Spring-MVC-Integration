@@ -1,18 +1,13 @@
 var bookcatControllers = angular.module('bookcatControllers', []);
 
-bookcatControllers.controller('BookListCtrl', ['$scope', 'Book',
-  function($scope, Book) {
-    $scope.books = Book.query();
-    $scope.orderProp = 'title';
+bookcatControllers.controller('BookListCtrl', ['$scope', 'BookList',
+  function($scope, BookList) {
+    $scope.books = BookList.query();
+    $scope.orderProp = 'fullname';
   }]);
 
-//phonecatControllers.controller('PhoneDetailCtrl', ['$scope', '$routeParams', 'Phone',
-//  function($scope, $routeParams, Phone) {
-//    $scope.phone = Phone.get({phoneId: $routeParams.phoneId}, function(phone) {
-//      $scope.mainImageUrl = phone.images[0];
-//    });
-//
-//    $scope.setImage = function(imageUrl) {
-//      $scope.mainImageUrl = imageUrl;
-//    }
-//  }]);
+bookcatControllers.controller('BookDetailCtrl', ['$scope', '$routeParams', 'Book',
+                                                   function($scope, $routeParams, Book) {
+                                                     $scope.book = Book.get({bookId: $routeParams.bookId}, function(book) {
+                                                     });
+                                                   }]);

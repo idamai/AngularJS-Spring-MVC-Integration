@@ -11,17 +11,17 @@
 	},
 	{
 		"id" : "LL",
-		"title" : "Boook of Mormon",
-		"fullname" : "The Book of Mormon"
+		"title" : "Sherlock Holmes",
+		"fullname" : "The Great Adventures of Sherlock Holmes"
 	},
 	{
-		"id" : "BookOfMormon",
-		"title" : "Boook of Mormon",
-		"fullname" : "The Book of Mormon"
+		"id" : "MiOE",
+		"title" : "Murder on the Orient Express",
+		"fullname" : "Agatha Christie's Murder on the Orient Express"
 	},
 	{
-		"id" : "BookOfMormon",
-		"title" : "Boook of Mormon",
-		"fullname" : "The Book of Mormon"
+		"id" : "JB",
+		"title" : "Jungle Book",
+		"fullname" : "Disney Classics: Jungle Book"
 	}
 ]
