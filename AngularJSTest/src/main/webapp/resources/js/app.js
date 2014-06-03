@@ -5,7 +5,8 @@
 var bookcatApp = angular.module('bookcatApp', [
   'ngRoute',
   'bookcatControllers',
-  'bookcatServices'
+  'bookcatServices',
+  'ui.bootstrap'
 ]);
 
 bookcatApp.config(['$routeProvider',
